@@ -246,4 +246,19 @@ public class BST<Key extends Comparable<Key>> {
     private boolean isEmpty() {
         return size() == 0;
     }
+
+    /**
+     * compute the average height of an N node tree
+     */
+    public double averageDepth() {
+        return (double) totalHeightHelper(root) / (double) size(root);
+    }
+
+    private int totalHeightHelper(Node n){
+        if(n == null){
+            return 0;
+        }
+
+        return totalHeightHelper(n.left) + size(n.left) + totalHeightHelper(n.right) + size(n.right);
+    }
 }
